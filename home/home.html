@@ -1,9 +1,33 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ restaurant_name }}</title>
+    <title>Restaurant Homepage</title>
 </head>
-<body>
-    <h1>Welcome to {{ restaurant_name }}!</h1>
+<body style="font-family: Arial, sans-serif; background-color: #f8f8f8; margin: 0; padding: 0;">
+
+    <header style="background-color: #ff6347; color: white; padding: 20px; text-align: center;">
+        <h1 style="margin: 0;">Welcome to {{ restaurant_name }}</h1>
+        <nav style="margin-top: 10px;">
+            <a href="/" style="color: white; text-decoration: none; margin: 0 15px;">Home</a>
+            <a href="/menu/" style="color: white; text-decoration: none; margin: 0 15px;">Menu</a>
+            <a href="/about/" style="color: white; text-decoration: none; margin: 0 15px;">About</a>
+        </nav>
+    </header>
+
+    <main style="padding: 40px; text-align: center;">
+        <h2 style="color: #333;">Delicious food made with love</h2>
+        <p style="color: #555; max-width: 600px; margin: 20px auto; font-size: 18px; line-height: 1.6;">
+            At {{ restaurant_name }}, we serve fresh and flavorful dishes made from the finest ingredients.
+            Whether you're here for a quick lunch or a family dinner, we’ve got something for everyone.
+        </p>
+        <img src="https://via.placeholder.com/600x300" alt="Restaurant" 
+             style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    </main>
+
+    <footer style="background-color: #333; color: white; text-align: center; padding: 15px; margin-top: 40px;">
+        &copy; {{ restaurant_name }} - All Rights Reserved
+    </footer>
+
 </body>
 </html>
