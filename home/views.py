@@ -36,3 +36,6 @@ def menu_page(request):
         print("Error fetching menu:", e)
 
     return render(request, 'home/menu.html', {'menu': menu_data})
+
+def about_page(request):
+    return render(request, 'about.html')
