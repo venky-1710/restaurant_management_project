@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.conf import settings
 
 class MenuAPIView(APIView):
     def get(self, request):
@@ -40,5 +41,8 @@ def about_page(request):
     return render(request, 'about.html')
 
 def homepage(request):
-    restaurant_name = "Gourmet Paradise"  # You can also fetch this from settings.py or the database
-    return render(request, "home/homepage.html", {"restaurant_name": restaurant_name})
+    context = {
+        "restaurant_name": "My Awesome Restaurant",
+        "phone_number": settings.RESTAURANT_PHONE_NUMBER
+    }
+    return render(request, "homepage.html", context)
