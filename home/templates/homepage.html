@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,20 +7,65 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #fafafa;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
+            margin: 0;
+            padding: 0;
             color: #333;
         }
-        .phone {
-            font-size: 1.2em;
-            color: #555;
+
+        header {
+            background-color: #ff7043;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
+        }
+
+        a {
+            color: #ff7043;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to {{ restaurant_name }}</h1>
-    <p class="phone">Call us: {{ phone_number }}</p>
+    <header>
+        <h1>{{ restaurant_name }}</h1>
+        <p>Welcome to our restaurant!</p>
+    </header>
+
+    <main>
+        <p>Enjoy our delicious menu, cozy atmosphere, and friendly service.</p>
+        <p>Phone: {{ phone_number }}</p>
+        <a href="{% url 'about' %}">Learn more about us</a>
+    </main>
+
+    <footer>
+        <p>&copy; {{ restaurant_name }} - All Rights Reserved</p>
+    </footer>
 </body>
 </html>
