@@ -46,3 +46,12 @@ def homepage(request):
         "phone_number": settings.RESTAURANT_PHONE_NUMBER
     }
     return render(request, "homepage.html", context)
+
+def contact_us(request):
+    context = {
+        "restaurant_name": "My Awesome Restaurant",
+        "phone_number": "+1 (555) 123-4567",
+        "email": "contact@myrestaurant.com",
+        "address": "123 Main Street, Springfield, USA"
+    }
+    return render(request, "contact_us.html", context)
