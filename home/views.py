@@ -39,3 +39,7 @@ def menu_page(request):
 
 def about_page(request):
     return render(request, 'about.html')
+
+def homepage(request):
+    restaurant_name = "Gourmet Paradise"  # You can also fetch this from settings.py or the database
+    return render(request, "homepage.html", {"restaurant_name": restaurant_name})
