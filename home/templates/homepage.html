@@ -1,71 +1,69 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ restaurant_name }}</title>
+    <title>{{ restaurant_name }} - Welcome</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #fafafa;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
-            color: #333;
-        }
-
-        header {
-            background-color: #ff7043;
-            color: white;
-            padding: 20px;
             text-align: center;
         }
-
+        header {
+            background-color: #d35400;
+            color: white;
+            padding: 20px;
+        }
         h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2.5rem;
         }
-
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-        }
-
         p {
-            line-height: 1.6;
+            font-size: 1.1rem;
+            margin: 15px 0;
         }
-
-        footer {
+        nav {
             background-color: #333;
+            padding: 10px 0;
+        }
+        nav a {
             color: white;
-            text-align: center;
-            padding: 10px;
-            margin-top: 40px;
-        }
-
-        a {
-            color: #ff7043;
             text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
         }
-
-        a:hover {
-            text-decoration: underline;
+        nav a:hover {
+            background-color: #575757;
+            border-radius: 4px;
+        }
+        footer {
+            background-color: #f1f1f1;
+            padding: 15px;
+            font-size: 0.9rem;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>{{ restaurant_name }}</h1>
-        <p>Welcome to our restaurant!</p>
+        <h1>Welcome to {{ restaurant_name }}</h1>
+        <p>Delicious food made with love!</p>
     </header>
 
+    <nav>
+        <a href="{% url 'homepage' %}">Home</a>
+        <a href="{% url 'about' %}">About Us</a>
+        <a href="{% url 'menu' %}">Menu</a>
+        <a href="{% url 'contact' %}">Contact Us</a>
+    </nav>
+
     <main>
-        <p>Enjoy our delicious menu, cozy atmosphere, and friendly service.</p>
-        <p>Phone: {{ phone_number }}</p>
-        <a href="{% url 'about' %}">Learn more about us</a>
+        <p>📞 Call us at: {{ phone_number }}</p>
     </main>
 
     <footer>
-        <p>&copy; {{ restaurant_name }} - All Rights Reserved</p>
+        &copy; {{ restaurant_name }} - All Rights Reserved
     </footer>
 </body>
 </html>
