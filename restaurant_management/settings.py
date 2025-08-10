@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+# settings.py
+RESTAURANT_PHONE_NUMBER = "+1 (555) 123-4567"
 # Application definition
 
 INSTALLED_APPS = [
