@@ -25,7 +25,6 @@ class MenuAPIView(APIView):
 
 
 import requests
-from django.shortcuts import render
 
 def menu_page(request):
     try:
