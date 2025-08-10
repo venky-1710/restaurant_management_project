@@ -39,13 +39,12 @@ def menu_page(request):
 
 def about_page(request):
     return render(request, 'about.html')
-
+    
 def homepage(request):
-    context = {
-        "restaurant_name": "My Awesome Restaurant",
-        "phone_number": settings.RESTAURANT_PHONE_NUMBER
-    }
-    return render(request, "homepage.html", context)
+    return render(request, 'homepage.html', {
+        'restaurant_name': 'My Awesome Restaurant',
+        'phone_number': settings.RESTAURANT_PHONE_NUMBER
+    })
 
 def contact_us(request):
     context = {
