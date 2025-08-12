@@ -22,5 +22,13 @@
 <body>
     <h1>Reservations</h1>
     <p>This is a placeholder for the Reservations page. Coming soon!</p>
+
+     <footer>
+        &copy; <span id="year"></span> My Restaurant. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
