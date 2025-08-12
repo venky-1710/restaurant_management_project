@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +18,12 @@
             color: white;
             padding: 20px;
         }
+        header img {
+            max-width: 150px;
+            height: auto;
+            display: block;
+            margin: 0 auto 15px;
+        }
         h1 {
             margin: 0;
             font-size: 2.5rem;
@@ -25,62 +33,45 @@
             margin: 15px 0;
         }
         nav {
-            background-color: #333;
-            padding: 10px 0;
+            background-color: #e67e22;
+            padding: 10px;
         }
         nav a {
             color: white;
+            margin: 0 15px;
             text-decoration: none;
-            padding: 10px 15px;
-            display: inline-block;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: bold;
         }
         nav a:hover {
-            background-color: #575757;
-            border-radius: 4px;
-            transform: scale(1.05);
-        }
-        main {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-decoration: underline;
         }
         footer {
-            background-color: #f1f1f1;
+            background-color: #d35400;
+            color: white;
             padding: 15px;
-            font-size: 0.9rem;
-            margin-top: 30px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="{{ restaurant_name }} Logo">
         <h1>Welcome to {{ restaurant_name }}</h1>
-        <p>Delicious food made with love!</p>
+        <p>Experience the best food in town!</p>
     </header>
 
     <nav>
-        <a href="{% url 'homepage' %}">Home</a>
-        <a href="{% url 'about' %}">About Us</a>
-        <a href="{% url 'menu' %}">Menu</a>
-        <a href="{% url 'contact' %}">Contact Us</a>
+        <a href="/">Home</a>
+        <a href="/menu">Menu</a>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact</a>
     </nav>
 
-    <main>
-        <p>📞 Call us at: {{ phone_number }}</p>
-    </main>
-
     <footer>
-        &copy; {{ restaurant_name }} - All Rights Reserved
+        &copy; {{ current_year }} {{ restaurant_name }}. All rights reserved.
     </footer>
 </body>
 </html>
-
-
-
 
 
 
