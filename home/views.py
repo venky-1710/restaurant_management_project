@@ -3,6 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.conf import settings
 
+import requests
+from .models import MenuItem
 class MenuAPIView(APIView):
     def get(self, request):
         menu = [
@@ -23,9 +25,6 @@ class MenuAPIView(APIView):
             }
         ]
         return Response(menu)
-
-
-import requests
 
 def menu_page(request):
     try:
@@ -58,8 +57,15 @@ def contact_us(request):
 def reservations_page(request):
     return render(request, 'reservations.html')
 
-
-
+def home_view(request):
+    try:
+        menu_items = MenuItem.objects.all()  # Database query
+        return render(request, 'home.html', {'menu_items': menu_items})
+    except Exception as e:
+        # Log the error (optional)
+        print(f"Error loading homepage: {e}")
+        # Show a user-friendly message
+        return HttpResponse("Sorry, something went wrong. Please try again later.", status=500)
 
 
 
