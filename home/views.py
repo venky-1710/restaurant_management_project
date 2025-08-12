@@ -54,3 +54,24 @@ def contact_us(request):
         "address": "123 Main Street, Springfield, USA"
     }
     return render(request, "contact_us.html", context)
+
+def reservations_page(request):
+    return render(request, 'reservations.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
