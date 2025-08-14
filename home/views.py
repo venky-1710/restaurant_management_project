@@ -67,11 +67,10 @@ def home_view(request):
         # Show a user-friendly message
         return HttpResponse("Sorry, something went wrong. Please try again later.", status=500)
 
-
-
-
-
-
+def home(request):
+    return render(request, 'home.html', {
+        'current_year': datetime.now().year
+    })
 
 
 
