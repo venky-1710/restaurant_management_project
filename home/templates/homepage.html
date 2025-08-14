@@ -1,63 +1,61 @@
 
 
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ restaurant_name }} - Welcome</title>
+    <title>{{ restaurant_name }} - Home</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
-            text-align: center;
         }
         header {
-            background-color: #d35400;
+            background-color: #ff9800;
+            padding: 10px;
             color: white;
-            padding: 20px;
-        }
-        header img {
-            max-width: 150px;
-            height: auto;
-            display: block;
-            margin: 0 auto 15px;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        p {
-            font-size: 1.1rem;
-            margin: 15px 0;
+            text-align: center;
         }
         nav {
-            background-color: #e67e22;
+            background-color: #333;
             padding: 10px;
+            text-align: center;
         }
         nav a {
             color: white;
-            margin: 0 15px;
+            padding: 10px 15px;
             text-decoration: none;
-            font-weight: bold;
         }
         nav a:hover {
-            text-decoration: underline;
+            background-color: #555;
         }
-        footer {
-            background-color: #d35400;
+        .search-bar {
+            margin: 20px auto;
+            text-align: center;
+        }
+        .search-bar input[type="text"] {
+            padding: 8px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-bar button {
+            padding: 8px 12px;
+            border: none;
+            background-color: #ff9800;
             color: white;
-            padding: 15px;
-            margin-top: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #e68a00;
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="{{ restaurant_name }} Logo">
-        <h1>Welcome to {{ restaurant_name }}</h1>
-        <p>Experience the best food in town!</p>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="50">
+        <h1>{{ restaurant_name }}</h1>
     </header>
 
     <nav>
@@ -67,13 +65,24 @@
         <a href="/contact">Contact</a>
     </nav>
 
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <form method="GET" action="#">
+            <input type="text" name="search" placeholder="Search menu items...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <main>
+        <h2>Welcome to {{ restaurant_name }}</h2>
+        <p>Enjoy our delicious food and warm atmosphere!</p>
+    </main>
+
     <footer>
-        &copy; {{ current_year }} {{ restaurant_name }}. All rights reserved.
+        <p>&copy; {{ current_year }} {{ restaurant_name }}. All rights reserved.</p>
     </footer>
 </body>
 </html>
-
-
 
 
 
