@@ -72,32 +72,34 @@
             <button type="submit">Search</button>
         </form>
     </div>
-
 <main>
     <h2>Welcome to {{ restaurant_name }}</h2>
     <p>Enjoy our delicious food and warm atmosphere!</p>
-
-    <!-- Contact Us Form -->
-    <section id="contact-form" style="margin: 40px auto; text-align: center;">
-        <h3>Contact Us</h3>
-        <form id="contactForm" method="POST" action="/contact">
-            <div style="margin: 10px;">
-                <input type="text" id="name" name="name" placeholder="Your Name" 
-                       style="padding: 8px; width: 250px; border: 1px solid #ccc; border-radius: 4px;">
-            </div>
-            <div style="margin: 10px;">
-                <input type="email" id="email" name="email" placeholder="Your Email" 
-                       style="padding: 8px; width: 250px; border: 1px solid #ccc; border-radius: 4px;">
-            </div>
-            <div style="margin: 10px;">
-                <button type="submit" 
-                        style="padding: 8px 16px; border: none; background-color: #ff9800; color: white; border-radius: 4px; cursor: pointer;">
-                    Submit
-                </button>
-            </div>
-        </form>
-    </section>
 </main>
+
+<!-- Restaurant Address Section -->
+<section style="padding: 20px; text-align: center;">
+    <h2>Find Us</h2>
+    <p><strong>Address:</strong> {{ restaurant_address }}</p>
+
+    <!-- Google Maps Embed -->
+    <div style="margin: 20px auto; max-width: 600px;">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.7775230984824!2d77.490125!3d28.752511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf1f41cd6601f%3A0xd00d6b8c0c13c7c6!2sKIET%20Group%20of%20Institutions!5e0!3m2!1sen!2sin!4v1690123456789"
+            width="100%" 
+            height="350" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; {{ current_year }} {{ restaurant_name }}. All rights reserved.</p>
+</footer>
+
 
 <!-- Simple Client-side Validation -->
 <script>
@@ -111,9 +113,6 @@
         }
     });
 </script>
-    <footer>
-        <p>&copy; {{ current_year }} {{ restaurant_name }}. All rights reserved.</p>
-    </footer>
 </body>
 </html>
 
