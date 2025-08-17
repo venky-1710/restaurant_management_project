@@ -67,12 +67,13 @@ def home_view(request):
         # Show a user-friendly message
         return HttpResponse("Sorry, something went wrong. Please try again later.", status=500)
 
+
 def home(request):
-    return render(request, 'home.html', {
-        'current_year': datetime.now().year
+    return render(request, "home.html", {
+        "restaurant_name": settings.RESTAURANT_NAME,
+        "restaurant_address": settings.RESTAURANT_ADDRESS,
+        "current_year": datetime.now().year,
     })
-
-
 
 from django.shortcuts import render, redirect
 from .forms import FeedbackForm
