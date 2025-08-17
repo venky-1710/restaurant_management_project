@@ -87,3 +87,28 @@ def feedback_view(request):
         form = FeedbackForm()
 
     return render(request, 'feedback.html', {'form': form})
+
+
+from .forms import ContactForm
+
+def home(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()  # Save to database
+            return redirect('home')  # Redirect after successful submission
+    else:
+        form = ContactForm()
+
+    return render(request, 'home.html', {'form': form})
+
+
+
+
+
+
+
+
+
+
+
