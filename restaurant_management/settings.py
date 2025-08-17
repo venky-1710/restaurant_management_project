@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['*']
 
 # settings.py
 RESTAURANT_PHONE_NUMBER = "+1 (555) 123-4567"
+RESTAURANT_ADDRESS = "Pune"
 # Application definition
 
 INSTALLED_APPS = [
