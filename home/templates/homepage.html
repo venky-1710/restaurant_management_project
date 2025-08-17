@@ -73,11 +73,44 @@
         </form>
     </div>
 
-    <main>
-        <h2>Welcome to {{ restaurant_name }}</h2>
-        <p>Enjoy our delicious food and warm atmosphere!</p>
-    </main>
+<main>
+    <h2>Welcome to {{ restaurant_name }}</h2>
+    <p>Enjoy our delicious food and warm atmosphere!</p>
 
+    <!-- Contact Us Form -->
+    <section id="contact-form" style="margin: 40px auto; text-align: center;">
+        <h3>Contact Us</h3>
+        <form id="contactForm" method="POST" action="/contact">
+            <div style="margin: 10px;">
+                <input type="text" id="name" name="name" placeholder="Your Name" 
+                       style="padding: 8px; width: 250px; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <div style="margin: 10px;">
+                <input type="email" id="email" name="email" placeholder="Your Email" 
+                       style="padding: 8px; width: 250px; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <div style="margin: 10px;">
+                <button type="submit" 
+                        style="padding: 8px 16px; border: none; background-color: #ff9800; color: white; border-radius: 4px; cursor: pointer;">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<!-- Simple Client-side Validation -->
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+
+        if (name === "" || email === "") {
+            alert("Please fill in both Name and Email.");
+            event.preventDefault(); // stop form submission
+        }
+    });
+</script>
     <footer>
         <p>&copy; {{ current_year }} {{ restaurant_name }}. All rights reserved.</p>
     </footer>
