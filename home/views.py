@@ -102,7 +102,11 @@ def home(request):
 
     return render(request, 'home.html', {'form': form})
 
+from .models import RestaurantInfo
 
+def home(request):
+    restaurant_name = RestaurantInfo.objects.first()  # get first entry
+    return render(request, 'home.html', {'restaurant_name': restaurant_name})
 
 
 
