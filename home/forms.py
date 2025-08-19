@@ -16,8 +16,10 @@ class ContactForm(forms.ModelForm):
         fields = ['name', 'email']
 
 
-
-
+class MenuItemForm(forms.ModelForm):
+    class Meta:
+        model = MenuItem
+        fields = ['name', 'description', 'price', 'image']
 
 
 
