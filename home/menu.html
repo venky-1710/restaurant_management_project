@@ -1,14 +1,44 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Restaurant Menu</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 30px; }
-        .menu-container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
-        .dish { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ddd; }
-        .dish h2 { margin: 0; font-size: 1.4em; }
-        .dish p { margin: 5px 0; color: #555; }
-        .dish .price { font-weight: bold; color: #007BFF; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #f0f0f0; 
+            padding: 30px; 
+        }
+        .menu-container { 
+            max-width: 600px; 
+            margin: auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+        }
+        .dish { 
+            margin-bottom: 20px; 
+            padding-bottom: 10px; 
+            border-bottom: 1px solid #ddd; 
+        }
+        .dish h2 { 
+            margin: 0; 
+            font-size: 1.4em; 
+        }
+        .dish p { 
+            margin: 5px 0; 
+            color: #555; 
+        }
+        .dish .price { 
+            font-weight: bold; 
+            color: #007BFF; 
+        }
+        .dish img { 
+            max-width: 100%; 
+            height: auto; 
+            border-radius: 6px; 
+            margin-bottom: 10px; 
+        }
     </style>
 </head>
 <body>
@@ -16,6 +46,9 @@
         <h1>Our Menu</h1>
         {% for item in menu %}
             <div class="dish">
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                {% endif %}
                 <h2>{{ item.name }}</h2>
                 <p>{{ item.description }}</p>
                 <p class="price">₹{{ item.price }}</p>
@@ -26,3 +59,15 @@
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
