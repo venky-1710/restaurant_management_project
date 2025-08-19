@@ -111,6 +111,12 @@ def menu(request):
     return render(request, 'menu.html', {'menu_items': menu_items})
 
 
+from .models import MenuItem
+
+def menu_view(request):
+    items = MenuItem.objects.all()
+    return render(request, 'home/menu.html', {'items': items})
+
 from django.shortcuts import render, redirect
 from .forms import ContactForm
 
