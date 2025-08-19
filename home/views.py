@@ -59,10 +59,11 @@ def reservations_page(request):
 
 from .models import RestaurantInfo
 
-def home_view(request):
-    info = RestaurantInfo.objects.first()  # get first entry
-    return render(request, 'home.html', {'info': info})
+from .models import Restaurant
 
+def home_view(request):
+    restaurant = Restaurant.objects.first()  # fetch the first (or only) restaurant
+    return render(request, 'home.html', {'restaurant': restaurant})
 def home(request):
     return render(request, "home.html", {
         "restaurant_name": settings.RESTAURANT_NAME,
