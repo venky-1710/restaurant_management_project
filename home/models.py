@@ -26,12 +26,15 @@ class Contact(models.Model):
     def __str__(self):
         return f"{self.name} ({self.email})"
 
+
 class RestaurantInfo(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, default="My Restaurant")
+    address = models.TextField()
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
 
     def __str__(self):
         return self.name
-
 
 
 
