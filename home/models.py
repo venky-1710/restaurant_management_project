@@ -59,14 +59,17 @@ class RestaurantLocation(models.Model):
 
 
 
+
+
 class Restaurant(models.Model):
     name = models.CharField(max_length=200)
-    address = models.TextField()
+    address = models.CharField(max_length=300)
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    zip_code = models.CharField(max_length=10)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)  # new field
 
     def __str__(self):
         return self.name
-
-
-
 
 
