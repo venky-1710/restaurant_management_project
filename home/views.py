@@ -111,5 +111,17 @@ def menu(request):
     return render(request, 'menu.html', {'menu_items': menu_items})
 
 
+from django.shortcuts import render, redirect
+from .forms import ContactForm
 
+def contact_view(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()  # Store in DB
+            return redirect('contact')  # Redirect to the same page (or a "thank you" page)
+    else:
+        form = ContactForm()
+
+    return render(request, "contact.html", {"form": form})
 
