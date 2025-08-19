@@ -1,32 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Contact Us - {{ restaurant_name }}</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fafafa;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            font-size: 1.1em;
-            color: #555;
-        }
-        .contact-info {
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Contact Us</h1>
-    <div class="contact-info">
-        <p><strong>Phone:</strong> {{ phone_number }}</p>
-        <p><strong>Email:</strong> {{ email }}</p>
-        <p><strong>Address:</strong> {{ address }}</p>
-    </div>
-</body>
-</html>
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Contact Us</h2>
+  <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+  </form>
+{% endblock %}
+
+
+
+
