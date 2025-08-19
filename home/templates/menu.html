@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +11,11 @@
         nav a { color: white; padding: 10px 15px; text-decoration: none; }
         nav a:hover { background-color: #555; }
         .menu-container { width: 80%; margin: 20px auto; }
-        .menu-item { border-bottom: 1px solid #ddd; padding: 10px 0; }
-        .menu-item h3 { margin: 0; color: #ff9800; }
-        .menu-item p { margin: 5px 0; }
+        .menu-item { border-bottom: 1px solid #ddd; padding: 15px 0; display: flex; align-items: center; gap: 20px; }
+        .menu-item img { width: 120px; height: 100px; object-fit: cover; border-radius: 8px; }
+        .menu-details { flex: 1; }
+        .menu-details h3 { margin: 0; color: #ff9800; }
+        .menu-details p { margin: 5px 0; }
         .price { font-weight: bold; }
     </style>
 </head>
@@ -32,9 +35,14 @@
         <h2>Our Menu</h2>
         {% for item in items %}
             <div class="menu-item">
-                <h3>{{ item.name }}</h3>
-                <p>{{ item.description }}</p>
-                <p class="price">₹{{ item.price }}</p>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                {% endif %}
+                <div class="menu-details">
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.description }}</p>
+                    <p class="price">₹{{ item.price }}</p>
+                </div>
             </div>
         {% empty %}
             <p>No menu items available.</p>
@@ -46,6 +54,5 @@
     </footer>
 </body>
 </html>
-
 
 
