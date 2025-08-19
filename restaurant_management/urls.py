@@ -18,14 +18,21 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls import handler404
 from django.shortcuts import render
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include('home.urls')),
     path('api/accounts/',include('account.urls')),
     path('api/products/',include('products.urls')),
     path('api/orders/',include('orders.urls')),
+    path('', include('home.urls')),  # your app routes
 ]
 
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 def custom_404(request, exception):
     return render(request, '404.html', status=404)
 
