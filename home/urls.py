@@ -10,6 +10,7 @@ urlpatterns = [
     path('menu-list/', views.menu_list, name='menu_list'),
     path('feedback/', views.feedback_view, name='feedback'),
     path('feedback-success/', views.feedback_success_view, name='feedback_success'),
+    path("contact/",views.contact_view, name="contact"),
 ]
 
 
