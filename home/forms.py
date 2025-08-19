@@ -1,6 +1,6 @@
 from django import forms
 from .models import Feedback
-from .models import Contact
+from .models import ContactSubmission
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
@@ -12,7 +12,7 @@ class FeedbackForm(forms.ModelForm):
 
 class ContactForm(forms.ModelForm):
     class Meta:
-        model = Contact
+        model = ContactSubmission
         fields = ['name', 'email']
 
 
