@@ -57,16 +57,11 @@ def contact_us(request):
 def reservations_page(request):
     return render(request, 'reservations.html')
 
-def home_view(request):
-    try:
-        menu_items = MenuItem.objects.all()  # Database query
-        return render(request, 'home.html', {'menu_items': menu_items})
-    except Exception as e:
-        # Log the error (optional)
-        print(f"Error loading homepage: {e}")
-        # Show a user-friendly message
-        return HttpResponse("Sorry, something went wrong. Please try again later.", status=500)
+from .models import RestaurantInfo
 
+def home_view(request):
+    info = RestaurantInfo.objects.first()  # get first entry
+    return render(request, 'home.html', {'info': info})
 
 def home(request):
     return render(request, "home.html", {
