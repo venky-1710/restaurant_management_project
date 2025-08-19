@@ -138,12 +138,22 @@ def contact_view(request):
 
     return render(request, "contact_us.html", {"form": form})
 
-from .models import Restaurant, MenuItem
 
-def homepage(request):
-    restaurant = Restaurant.objects.first()  # get first restaurant
+
+from django.shortcuts import render
+from .models import MenuItem, RestaurantDetails
+
+def homepage(request):   # <-- Added request here
     menu = MenuItem.objects.all()
-    return render(request, 'home/index.html', {
-        'restaurant': restaurant,
-        'menu': menu
-    })
+    details = RestaurantDetails.objects.first()
+    return render(request, "home.html", {"menu": menu, "details": details})
+
+
+
+
+
+
+
+
+
+
