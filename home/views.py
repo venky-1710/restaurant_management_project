@@ -105,10 +105,10 @@ def home(request):
     return render(request, 'home.html', {'restaurant_name': restaurant_name})
 
 
-def menu_view(request):
+def menu(request):
     # Fetch all menu items from database
     items = MenuItem.objects.all()
-    return render(request, 'menu.html', {'items': items})
+    return render(request, 'menu.html', {'menu_items': menu_items})
 
 
 
