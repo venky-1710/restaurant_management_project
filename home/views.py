@@ -39,12 +39,18 @@ def menu_page(request):
 def about_page(request):
     return render(request, 'about.html')
     
+
+from .models import Restaurant, MenuItem
+
 def homepage(request):
+    restaurant = Restaurant.objects.first()  # get first restaurant
+    menu = MenuItem.objects.all()
     return render(request, 'homepage.html', {
-        'restaurant_name': 'My Awesome Restaurant',
-        'phone_number': settings.RESTAURANT_PHONE_NUMBER
+        'restaurant': restaurant,
+        'menu': menu
     })
 
+    
 def contact_us(request):
     context = {
         "restaurant_name": "My Awesome Restaurant",
