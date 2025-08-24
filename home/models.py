@@ -60,6 +60,14 @@ class RestaurantLocation(models.Model):
 
 
 
+class RestaurantDetails(models.Model):
+    name = models.CharField(max_length=100)
+    address = models.TextField()
+    phone = models.CharField(max_length=20)
+    logo = models.ImageField(upload_to='logos/', null=True, blank=True)  # New field
+
+    def __str__(self):
+        return self.name
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=200)
