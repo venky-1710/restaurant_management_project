@@ -145,17 +145,16 @@ def contact_view(request):
 from django.shortcuts import render
 from .models import MenuItem, RestaurantDetails
 
+
+
+
 def homepage(request):
-    details = RestaurantDetails.objects.first()
-    return render(
-        request,
-        "home.html",
-        {
-            "details": details,
-        }
-    )
+    # Get cart from session, default to empty dict
+    cart = request.session.get('cart', {})
+    total_items = sum(cart.values())  # total number of items
 
-
-
+    return render(request, 'homepage.html', {
+        'total_items': total_items,
+    })
 
 
