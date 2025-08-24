@@ -29,10 +29,8 @@ class ContactSubmission(models.Model):
 
 
 class RestaurantInfo(models.Model):
-    name = models.CharField(max_length=200, default="My Restaurant")
+    name = models.CharField(max_length=200)
     address = models.TextField()
-    phone = models.CharField(max_length=20, blank=True, null=True)
-    email = models.EmailField(blank=True, null=True)
 
     def __str__(self):
         return self.name
