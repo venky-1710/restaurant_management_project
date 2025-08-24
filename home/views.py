@@ -70,12 +70,19 @@ from .models import Restaurant
 def home_view(request):
     restaurant = Restaurant.objects.first()  # fetch the first (or only) restaurant
     return render(request, 'home.html', {'restaurant': restaurant})
+
 def home(request):
-    return render(request, "home.html", {
-        "restaurant_name": settings.RESTAURANT_NAME,
-        "restaurant_address": settings.RESTAURANT_ADDRESS,
-        "current_year": datetime.now().year,
+    query = request.GET.get('q')
+    if query:
+        menu_items = MenuItem.objects.filter(name__icontains=query)
+    else:
+        menu_items = MenuItem.objects.all()
+    
+    return render(request, 'home.html', {
+        'menu_items': menu_items,
+        'query': query
     })
+
 
 from django.shortcuts import render, redirect
 from .forms import FeedbackForm
@@ -187,6 +194,7 @@ def contact_view(request):
         form = ContactForm()
 
     return render(request, "contact_us.html", {"form": form})
+
 
 
 
