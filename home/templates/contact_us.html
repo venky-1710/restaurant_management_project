@@ -2,17 +2,19 @@
 
 
 
-<h2>Contact Us</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
 
-    <button type="submit">Send</button>
-</form>
 
-<!-- Show validation errors -->
-{% if form.errors %}
-    <div style="color: red; margin-top: 10px;">
-        {{ form.errors }}
-    </div>
-{% endif %}
