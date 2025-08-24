@@ -21,6 +21,7 @@ from . import views            # ✅ import views from current app
 urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('contact/', views.contact_view, name='contact'),
+    path('about/',views.about, name='about'),
 ]
 
 
