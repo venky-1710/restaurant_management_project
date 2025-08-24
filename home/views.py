@@ -186,6 +186,7 @@ def contact_view(request):
     else:
         form = ContactForm()
 
-    return render(request, "contact.html", {"form": form})
+    return render(request, "contact_us.html", {"form": form})
+
 
 
