@@ -1,20 +1,27 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ restaurant.name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ restaurant.name }} | Restaurant Homepage</title>
 </head>
 <body>
-    <h1>Welcome to {{ restaurant.name }}</h1>
-    <p>📍 Address: {{ restaurant.address }}</p>
-    <p>⏰ Opening Hours: {{ restaurant.opening_hours }}</p>
+    <header>
+        <h1>Welcome to {{ restaurant.name }}</h1>
+    </header>
+
+    <main>
+        <p>📍 Address: {{ restaurant.address }}</p>
+        <p>⏰ Opening Hours: {{ restaurant.opening_hours }}</p>
+    </main>
+
+    <footer>
+        <p>&copy; {{ restaurant.name }} - All Rights Reserved</p>
+    </footer>
 </body>
 </html>
-
-
-
-
 
 
 
