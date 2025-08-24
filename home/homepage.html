@@ -20,9 +20,26 @@
             font-size: 18px;
             margin-top: 10px;
         }
+
+        /* cart badge */
+        .cart-info {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 18px;
+            background: #ff6347;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
     </style>
 </head>
 <body>
+    <!-- Cart info -->
+    <div class="cart-info">
+        🛒 Cart: {{ total_items }} items
+    </div>
+
     <h1>Welcome to {{ restaurant_name }}</h1>
     <p>We’re glad to have you here. Enjoy our delicious menu and cozy atmosphere!</p>
 </body>
