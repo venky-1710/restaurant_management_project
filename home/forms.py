@@ -10,10 +10,6 @@ class FeedbackForm(forms.ModelForm):
             'comment': forms.Textarea(attrs={'placeholder': 'Write your feedback here...', 'rows': 4})
         }
 
-class ContactForm(forms.ModelForm):
-    class Meta:
-        model = ContactSubmission
-        fields = ['name', 'email']
 
 
 class MenuItemForm(forms.ModelForm):
@@ -23,6 +19,10 @@ class MenuItemForm(forms.ModelForm):
 
 
 
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100, required=True)
+    email = forms.EmailField(required=True)  # Django validates email automatically
+    message = forms.CharField(widget=forms.Textarea, required=True)
 
 
 
