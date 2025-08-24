@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.conf import settings
-from .models import MenuItem
+from .models import MenuItem, RestaurantDetails
 from datetime import datetime
 
 class MenuAPIView(APIView):
@@ -146,13 +146,11 @@ from django.shortcuts import render
 from .models import MenuItem, RestaurantDetails
 
 def homepage(request):
-    menu = MenuItem.objects.all()
     details = RestaurantDetails.objects.first()
     return render(
         request,
         "home.html",
         {
-            "menu": menu,
             "details": details,
         }
     )
