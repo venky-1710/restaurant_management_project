@@ -1,11 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #fafafa;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 8px 12px;
+            background: #ff6347;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 8px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Our Restaurant</h1>
 
-<h1>Welcome to {{ restaurant.name }}</h1>
+    <!-- Search bar -->
+    <form method="get" action="">
+        <input type="text" name="q" placeholder="Search menu..." value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
 
-<p><strong>Address:</strong> {{ restaurant.address }}</p>
-
-<h3>Opening Hours</h3>
-<pre>{{ restaurant.opening_hours }}</pre>
-
+    <!-- Menu Results -->
+    <h2>Menu</h2>
+    <ul>
+        {% for item in menu_items %}
+            <li>{{ item.name }} - ${{ item.price }}</li>
+        {% empty %}
+            <li>No items found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
 
 
 
