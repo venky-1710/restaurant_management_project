@@ -101,16 +101,16 @@ def feedback_view(request):
 
 from .forms import ContactForm
 
-def home(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()  # Save to database
-            return redirect('home')  # Redirect after successful submission
-    else:
-        form = ContactForm()
+from .models import Restaurant
 
-    return render(request, 'home.html', {'form': form})
+def home(request):
+    # Assuming you have only one restaurant entry
+    restaurant = Restaurant.objects.first()
+
+    return render(request, "home.html", {
+        "restaurant": restaurant
+    })
+
 
 from .models import RestaurantInfo
 
@@ -194,6 +194,7 @@ def contact_view(request):
         form = ContactForm()
 
     return render(request, "contact_us.html", {"form": form})
+
 
 
 
