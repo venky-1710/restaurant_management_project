@@ -157,19 +157,35 @@ def homepage(request):
         'total_items': total_items,
     })
 
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.conf import settings
 from .forms import ContactForm
 
 def contact_view(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
-            # Process the form (send email, save to DB, etc.)
-            # Example:
-            # name = form.cleaned_data['name']
-            # email = form.cleaned_data['email']
-            # message = form.cleaned_data['message']
-            return redirect("success")  # redirect to a success page
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+
+            # Construct email
+            subject = f"New Contact Form Submission from {name}"
+            full_message = f"From: {name} <{email}>\n\nMessage:\n{message}"
+
+            # Send email (settings must be configured)
+            send_mail(
+                subject,
+                full_message,
+                settings.DEFAULT_FROM_EMAIL,
+                ['restaurant@example.com'],  # replace with restaurant email
+            )
+
+            return redirect('contact_success')  # redirect after success
     else:
         form = ContactForm()
 
-    return render(request, "contact_us.html", {"form": form})
+    return render(request, "contact.html", {"form": form})
+
+
