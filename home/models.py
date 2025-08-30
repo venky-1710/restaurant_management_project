@@ -31,7 +31,7 @@ class ContactSubmission(models.Model):
 class RestaurantInfo(models.Model):
     name = models.CharField(max_length=200)
     address = models.TextField()
-    opening_hours = models.TextField(help_text="Enter opening hours, e.g., Mon-Fri: 9am - 10pm")
+
     def __str__(self):
         return self.name
 
@@ -67,16 +67,21 @@ class RestaurantDetails(models.Model):
     def __str__(self):
         return self.name
 
+
+
 class Restaurant(models.Model):
-    name = models.CharField(max_length=200)
-    address = models.CharField(max_length=300)
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    zip_code = models.CharField(max_length=10)
-    phone_number = models.CharField(max_length=15, blank=True, null=True)  # new field
+    name = models.CharField(max_length=100)
+    address = models.TextField()
+    opening_hours = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=15)  # ✅ New field
 
     def __str__(self):
         return self.name
 
 
 
+
+
+
+
+        
