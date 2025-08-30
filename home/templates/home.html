@@ -6,6 +6,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ restaurant.name }} | Restaurant Homepage</title>
+    <style>
+        .contact-info {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .phone {
+            color: #27ae60;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,6 +26,7 @@
     <main>
         <p>📍 Address: {{ restaurant.address }}</p>
         <p>⏰ Opening Hours: {{ restaurant.opening_hours }}</p>
+        <p class="contact-info">📞 Phone: <span class="phone">{{ restaurant.phone_number }}</span></p>
     </main>
 
     <footer>
@@ -22,6 +34,3 @@
     </footer>
 </body>
 </html>
-
-
-
