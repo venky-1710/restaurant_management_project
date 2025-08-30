@@ -70,19 +70,12 @@ from .models import Restaurant
 def home_view(request):
     restaurant = Restaurant.objects.first()  # fetch the first (or only) restaurant
     return render(request, 'home.html', {'restaurant': restaurant})
-
 def home(request):
-    query = request.GET.get('q')
-    if query:
-        menu_items = MenuItem.objects.filter(name__icontains=query)
-    else:
-        menu_items = MenuItem.objects.all()
-    
-    return render(request, 'home.html', {
-        'menu_items': menu_items,
-        'query': query
+    return render(request, "home.html", {
+        "restaurant_name": settings.RESTAURANT_NAME,
+        "restaurant_address": settings.RESTAURANT_ADDRESS,
+        "current_year": datetime.now().year,
     })
-
 
 from django.shortcuts import render, redirect
 from .forms import FeedbackForm
@@ -101,22 +94,15 @@ def feedback_view(request):
 
 from .forms import ContactForm
 
+
+from .models import RestaurantInfo
+from django.shortcuts import render
 from .models import Restaurant
 
 def home(request):
-    # Assuming you have only one restaurant entry
-    restaurant = Restaurant.objects.first()
+    restaurant = Restaurant.objects.first()  # or filter by ID
+    return render(request, "home.html", {"restaurant": restaurant})
 
-    return render(request, "home.html", {
-        "restaurant": restaurant
-    })
-
-
-from .models import RestaurantInfo
-
-def home(request):
-    restaurant_name = RestaurantInfo.objects.first()  # get first entry
-    return render(request, 'home.html', {'restaurant_name': restaurant_name})
 
 
 def menu(request):
@@ -164,38 +150,19 @@ def homepage(request):
         'total_items': total_items,
     })
 
-from django.shortcuts import render, redirect
-from django.core.mail import send_mail
-from django.conf import settings
 from .forms import ContactForm
 
 def contact_view(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            message = form.cleaned_data['message']
-
-            # Construct email
-            subject = f"New Contact Form Submission from {name}"
-            full_message = f"From: {name} <{email}>\n\nMessage:\n{message}"
-
-            # Send email (settings must be configured)
-            send_mail(
-                subject,
-                full_message,
-                settings.DEFAULT_FROM_EMAIL,
-                ['restaurant@example.com'],  # replace with restaurant email
-            )
-
-            return redirect('contact_success')  # redirect after success
+            # Process the form (send email, save to DB, etc.)
+            # Example:
+            # name = form.cleaned_data['name']
+            # email = form.cleaned_data['email']
+            # message = form.cleaned_data['message']
+            return redirect("success")  # redirect to a success page
     else:
         form = ContactForm()
 
     return render(request, "contact_us.html", {"form": form})
-
-
-
-
-
