@@ -7,7 +7,23 @@
 {% endblock %}
 
 {% block content %}
-    <div class="restaurant-info" style="margin-bottom:30px; text-align:center;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ restaurant.name }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #fafafa; color: #333; }
+        .restaurant-info { margin-bottom: 30px; text-align: center; }
+        .dish { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ddd; }
+        .dish h3 { margin: 0; font-size: 1.2em; color: #ff6347; }
+        .dish img { max-width: 150px; display: block; margin: 10px auto; border-radius: 8px; }
+        .price { font-weight: bold; color: #007BFF; }
+        .datetime { text-align: center; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="restaurant-info">
         <h1>Welcome to {{ restaurant.name }}</h1>
         <p><em>Your favorite place for delicious food and a cozy atmosphere.</em></p>
         <p>{{ restaurant.address }}, {{ restaurant.city }}, {{ restaurant.state }} - {{ restaurant.zip_code }}</p>
@@ -15,8 +31,8 @@
         <p><strong>Opening Hours:</strong> {{ restaurant.opening_hours }}</p>
     </div>
 
-    <!-- Date and Time Section -->
-    <div class="datetime" style="text-align:center; margin-bottom:30px;">
+    <!-- Date and Time -->
+    <div class="datetime">
         <p><strong>Today's Date:</strong> {% now "F j, Y" %}</p>
         <p><strong>Current Time:</strong> {% now "h:i A" %}</p>
     </div>
@@ -25,20 +41,23 @@
     <div class="menu-container">
         <h2>Our Menu</h2>
         {% for item in menu %}
-            <div class="dish" style="margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid #ddd;">
+            <div class="dish">
                 <h3>{{ item.name }}</h3>
                 {% if item.image %}
-                    <img src="{{ item.image.url }}" alt="{{ item.name }}" style="max-width:150px; display:block; margin:10px auto;">
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
                 {% endif %}
                 <p>{{ item.description }}</p>
-                <p class="price" style="font-weight:bold; color:#007BFF;">₹{{ item.price }}</p>
+                <p class="price">₹{{ item.price }}</p>
             </div>
         {% empty %}
             <p>No menu items available.</p>
         {% endfor %}
     </div>
 
+    <!-- FAQ link -->
     <div style="margin-top:30px; text-align:center;">
         <p><a href="{% url 'faq' %}">❓ Visit our FAQ page</a></p>
     </div>
+</body>
+</html>
 {% endblock %}
