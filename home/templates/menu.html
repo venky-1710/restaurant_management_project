@@ -1,58 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Menu{% endblock %}
+
+{% block breadcrumbs %}
+<span>› <a href="{% url 'menu' %}">Menu</a></span>
+{% endblock %}
+
+{% block content %}
+    <h2>Our Delicious Menu</h2>
+    <p style="margin-bottom:20px;">Explore our wide variety of dishes 🍕🍔🥗🍛</p>
+
+    {% if menu_items %}
+        <ul style="list-style:none; padding:0; text-align:left;">
+            {% for item in menu_items %}
+                <li style="margin:10px 0; padding:10px; border-bottom:1px solid #ddd;">
+                    <strong>{{ item.name }}</strong> - ₹{{ item.price }} <br>
+                    <small>{{ item.description }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No menu items available at the moment. Please check back later!</p>
+    {% endif %}
+{% endblock %}
 
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Menu - {{ restaurant_name }}</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background-color: #ff9800; padding: 10px; text-align: center; color: white; }
-        nav { background-color: #333; padding: 10px; text-align: center; }
-        nav a { color: white; padding: 10px 15px; text-decoration: none; }
-        nav a:hover { background-color: #555; }
-        .menu-container { width: 80%; margin: 20px auto; }
-        .menu-item { border-bottom: 1px solid #ddd; padding: 15px 0; display: flex; align-items: center; gap: 20px; }
-        .menu-item img { width: 120px; height: 100px; object-fit: cover; border-radius: 8px; }
-        .menu-details { flex: 1; }
-        .menu-details h3 { margin: 0; color: #ff9800; }
-        .menu-details p { margin: 5px 0; }
-        .price { font-weight: bold; }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>{{ restaurant_name }}</h1>
-    </header>
-
-    <nav>
-        <a href="/">Home</a>
-        <a href="/menu">Menu</a>
-        <a href="/about">About Us</a>
-        <a href="/contact">Contact</a>
-    </nav>
-
-    <main class="menu-container">
-        <h2>Our Menu</h2>
-        {% for item in items %}
-            <div class="menu-item">
-                {% if item.image %}
-                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
-                {% endif %}
-                <div class="menu-details">
-                    <h3>{{ item.name }}</h3>
-                    <p>{{ item.description }}</p>
-                    <p class="price">₹{{ item.price }}</p>
-                </div>
-            </div>
-        {% empty %}
-            <p>No menu items available.</p>
-        {% endfor %}
-    </main>
-
-    <footer>
-        <p>&copy; {{ current_year }} {{ restaurant_name }}. All rights reserved.</p>
-    </footer>
-</body>
-</html>
 
 
