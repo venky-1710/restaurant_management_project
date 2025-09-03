@@ -166,3 +166,24 @@ def contact_view(request):
         form = ContactForm()
 
     return render(request, "contact_us.html", {"form": form})
+
+
+
+def faq(request):
+    faqs = [
+        {"question": "What are your opening hours?", "answer": "We are open from 9:00 AM to 11:00 PM every day."},
+        {"question": "Where are you located?", "answer": "123 Main Street, City, State."},
+        {"question": "Do you offer home delivery?", "answer": "Yes, we offer home delivery within 5km."},
+        {"question": "Do you have vegetarian options?", "answer": "Yes, we serve both vegetarian and non-vegetarian dishes."},
+        {"question": "How can I contact you?", "answer": "You can call us at +91-9876543210 or email info@restaurant.com."}
+    ]
+    return render(request, "faq.html", {"faqs": faqs})
+
+
+
+
+
+
+
+
+    
