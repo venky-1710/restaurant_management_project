@@ -1,32 +1,49 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ restaurant.name }} | Restaurant Homepage</title>
+    <title>{{ restaurant.name }} | Home</title>
     <style>
-        .contact-info {
-            margin-top: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #2c3e50;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #fafafa;
         }
-        .phone {
-            color: #27ae60;
+        header {
+            background-color: #ff6347;
+            color: white;
+            padding: 20px 10px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .tagline {
+            font-size: 1.2rem;
+            margin-top: 8px;
+            color: #ffe4c4;
+            font-style: italic;
+        }
+        main {
+            margin: 30px auto;
+            max-width: 700px;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Welcome to {{ restaurant.name }}</h1>
+        <p class="tagline">"Where taste meets tradition 🍽️"</p>
     </header>
 
     <main>
         <p>📍 Address: {{ restaurant.address }}</p>
         <p>⏰ Opening Hours: {{ restaurant.opening_hours }}</p>
-        <p class="contact-info">📞 Phone: <span class="phone">{{ restaurant.phone_number }}</span></p>
+        <p>📞 Phone: {{ restaurant.phone_number }}</p>
     </main>
 
     <footer>
@@ -34,3 +51,4 @@
     </footer>
 </body>
 </html>
+
