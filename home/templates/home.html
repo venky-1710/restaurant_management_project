@@ -1,54 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ restaurant.name }} | Home</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background-color: #fafafa;
-        }
-        header {
-            background-color: #ff6347;
-            color: white;
-            padding: 20px 10px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        .tagline {
-            font-size: 1.2rem;
-            margin-top: 8px;
-            color: #ffe4c4;
-            font-style: italic;
-        }
-        main {
-            margin: 30px auto;
-            max-width: 700px;
-            padding: 20px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Welcome to {{ restaurant.name }}</h1>
-        <p class="tagline">"Where taste meets tradition 🍽️"</p>
-    </header>
 
-    <main>
-        <p>📍 Address: {{ restaurant.address }}</p>
-        <p>⏰ Opening Hours: {{ restaurant.opening_hours }}</p>
-        <p>📞 Phone: {{ restaurant.phone_number }}</p>
-    </main>
 
-    <footer>
-        <p>&copy; {{ restaurant.name }} - All Rights Reserved</p>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
 
+{% block title %}Homepage{% endblock %}
+
+{% block breadcrumbs %}
+<span>› Home</span>
+{% endblock %}
+
+{% block content %}
+    <h2>Welcome to {{ restaurant.name }}</h2>
+    <p style="font-size:18px; margin:10px 0;">{{ restaurant.tagline|default:"Where taste meets tradition 🍽️" }}</p>
+
+    <div style="text-align:left; margin-top:20px;">
+        <p><strong>📍 Address:</strong> {{ restaurant.address }}</p>
+        <p><strong>⏰ Opening Hours:</strong> {{ restaurant.opening_hours }}</p>
+        <p><strong>📞 Phone:</strong> {{ restaurant.phone_number }}</p>
+    </div>
+{% endblock %}
