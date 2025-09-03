@@ -1,20 +1,55 @@
 
 
+
+
 {% extends "base.html" %}
 
-{% block title %}Homepage{% endblock %}
+{% block title %}Home - {{ restaurant.name }}{% endblock %}
 
 {% block breadcrumbs %}
 <span>› Home</span>
 {% endblock %}
 
 {% block content %}
-    <h2>Welcome to {{ restaurant.name }}</h2>
-    <p style="font-size:18px; margin:10px 0;">{{ restaurant.tagline|default:"Where taste meets tradition 🍽️" }}</p>
+    <div class="restaurant-info" style="margin-bottom:30px; text-align:center;">
+        <h1>Welcome to {{ restaurant.name }}</h1>
+        <p><em>Your favorite place for delicious food and a cozy atmosphere.</em></p>
+        <p>{{ restaurant.address }}, {{ restaurant.city }}, {{ restaurant.state }} - {{ restaurant.zip_code }}</p>
+        <p><strong>Phone:</strong> {{ restaurant.phone_number }}</p>
+        <p><strong>Opening Hours:</strong> {{ restaurant.opening_hours }}</p>
+    </div>
 
-    <div style="text-align:left; margin-top:20px;">
-        <p><strong>📍 Address:</strong> {{ restaurant.address }}</p>
-        <p><strong>⏰ Opening Hours:</strong> {{ restaurant.opening_hours }}</p>
-        <p><strong>📞 Phone:</strong> {{ restaurant.phone_number }}</p>
+    <div class="menu-container">
+        <h2>Our Menu</h2>
+        {% for item in menu %}
+            <div class="dish" style="margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid #ddd;">
+                <h3>{{ item.name }}</h3>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}" style="max-width:150px; display:block; margin:10px 0;">
+                {% endif %}
+                <p>{{ item.description }}</p>
+                <p class="price" style="font-weight:bold; color:#007BFF;">₹{{ item.price }}</p>
+            </div>
+        {% empty %}
+            <p>No menu items available.</p>
+        {% endfor %}
+    </div>
+
+    <div style="margin-top:30px; text-align:center;">
+        <p><a href="{% url 'faq' %}">❓ Visit our FAQ page</a></p>
     </div>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
