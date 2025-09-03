@@ -1,7 +1,4 @@
 
-
-
-
 {% extends "base.html" %}
 
 {% block title %}Home - {{ restaurant.name }}{% endblock %}
@@ -19,13 +16,19 @@
         <p><strong>Opening Hours:</strong> {{ restaurant.opening_hours }}</p>
     </div>
 
+    <!-- Date and Time Section -->
+    <div class="datetime" style="text-align:center; margin-bottom:30px;">
+        <p><strong>Today's Date:</strong> {% now "F j, Y" %}</p>
+        <p><strong>Current Time:</strong> {% now "h:i A" %}</p>
+    </div>
+
     <div class="menu-container">
         <h2>Our Menu</h2>
         {% for item in menu %}
             <div class="dish" style="margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid #ddd;">
                 <h3>{{ item.name }}</h3>
                 {% if item.image %}
-                    <img src="{{ item.image.url }}" alt="{{ item.name }}" style="max-width:150px; display:block; margin:10px 0;">
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}" style="max-width:150px; display:block; margin:10px auto;">
                 {% endif %}
                 <p>{{ item.description }}</p>
                 <p class="price" style="font-weight:bold; color:#007BFF;">₹{{ item.price }}</p>
@@ -39,7 +42,6 @@
         <p><a href="{% url 'faq' %}">❓ Visit our FAQ page</a></p>
     </div>
 {% endblock %}
-
 
 
 
