@@ -21,6 +21,7 @@
         <p><strong>Current Time:</strong> {% now "h:i A" %}</p>
     </div>
 
+    <!-- Menu Section -->
     <div class="menu-container">
         <h2>Our Menu</h2>
         {% for item in menu %}
@@ -41,22 +42,3 @@
         <p><a href="{% url 'faq' %}">❓ Visit our FAQ page</a></p>
     </div>
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
