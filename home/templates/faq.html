@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}FAQ{% endblock %}
+
+{% block breadcrumbs %}
+<span>› FAQ</span>
+{% endblock %}
+
+{% block content %}
+    <h2>Frequently Asked Questions</h2>
+    <p>Here are some common questions our guests ask:</p>
+
+    <div style="text-align:left; margin-top:20px;">
+        {% for item in faqs %}
+            <div style="margin-bottom:15px; padding:10px; border-bottom:1px solid #ddd;">
+                <strong>Q: {{ item.question }}</strong><br>
+                <span>A: {{ item.answer }}</span>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
