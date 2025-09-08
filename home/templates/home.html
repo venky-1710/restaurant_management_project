@@ -8,6 +8,11 @@
 {% block content %}
     <h2>Welcome to {{ restaurant.name }}</h2>
     <p>{{ restaurant.tagline }}</p>
+
+    <div class="order-now">
+    <a href="{% url 'order_page' %}" class="order-button">Order Now</a>
+</div>
+
 {% endblock %}
 
 
