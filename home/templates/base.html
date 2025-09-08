@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,16 +13,26 @@
             margin: 0;
             padding: 0;
             background-color: #fafafa;
+            color: #333;
         }
         header {
             background-color: #ff6347;
             color: white;
-            padding: 15px;
+            padding: 20px;
             text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        header .tagline {
+            margin-top: 5px;
+            font-size: 1rem;
+            font-style: italic;
         }
         nav.breadcrumbs {
             font-size: 0.9rem;
-            margin: 15px;
+            margin: 15px 20px;
         }
         nav.breadcrumbs a {
             color: #ff6347;
@@ -41,9 +54,25 @@
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
+        footer {
+            background-color: #333;
+            color: #ddd;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        footer a {
+            color: #ff6347;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <h1>{{ restaurant.name }}</h1>
         <p class="tagline">"Where taste meets tradition 🍽️"</p>
@@ -55,24 +84,21 @@
         {% block breadcrumbs %}{% endblock %}
     </nav>
 
+    <!-- Page Content -->
     <main>
         {% block content %}{% endblock %}
     </main>
-<footer>
-    <p>&copy; {{ restaurant.name }}. All rights reserved.</p>
-    <p>
-        <a href="{% url 'faq' %}">FAQ</a> | 
-        <a href="{% url 'privacy' %}">Privacy Policy</a>
-    </p>
-</footer>
-    
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; {{ restaurant.name }}. All rights reserved.</p>
+        <p>
+            <a href="{% url 'faq' %}">FAQ</a> | 
+            <a href="{% url 'privacy' %}">Privacy Policy</a>
+        </p>
+    </footer>
 </body>
 </html>
-
-
-
-
-
 
 
 
