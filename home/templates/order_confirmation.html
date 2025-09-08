@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block breadcrumbs %}
+    <a href="{% url 'home' %}">Home</a> &raquo;
+    <a href="{% url 'menu' %}">Menu</a> &raquo;
+    Order Confirmation
+{% endblock %}
+
+{% block content %}
+    <h2>Thank you for your order!</h2>
+    <p>Your order has been confirmed.</p>
+{% endblock %}
