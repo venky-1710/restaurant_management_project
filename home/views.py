@@ -182,6 +182,8 @@ def faq(request):
 
 
 
+def privacy_policy(request):
+    return render(request, "home/privacy.html")
 
 
 
