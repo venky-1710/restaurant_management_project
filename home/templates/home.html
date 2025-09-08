@@ -2,32 +2,23 @@
 
 {% extends "base.html" %}
 
-{% block title %}Privacy Policy - {{ restaurant.name }}{% endblock %}
+{% block title %}Home - {{ restaurant.name }}{% endblock %}
 
 {% block content %}
-<div class="privacy-policy">
-    <h1>Privacy Policy</h1>
-    <p>We value your privacy and are committed to protecting your personal information.</p>
+<div class="restaurant-info">
+    <h1>Welcome to {{ restaurant.name }}</h1>
+    <p><em>Your favorite place for delicious food and a cozy atmosphere.</em></p>
+    <p>{{ restaurant.address }}, {{ restaurant.city }}, {{ restaurant.state }} - {{ restaurant.zip_code }}</p>
+    <p><strong>Phone:</strong> {{ restaurant.phone_number }}</p>
+    <p><strong>Opening Hours:</strong> {{ restaurant.opening_hours }}</p>
+</div>
 
-    <h2>Information We Collect</h2>
-    <p>We may collect basic information such as your name, email address, and phone number when you interact with our website.</p>
-
-    <h2>How We Use Your Information</h2>
-    <p>Your information is used to improve our services, respond to inquiries, and provide you with updates about our restaurant.</p>
-
-    <h2>Data Protection</h2>
-    <p>We take appropriate security measures to protect your personal information against unauthorized access, alteration, or disclosure.</p>
-
-    <h2>Third-Party Sharing</h2>
-    <p>We do not sell or rent your information to third parties. However, we may share it with service providers who assist us in running our business.</p>
-
-    <h2>Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, please contact us at <strong>{{ restaurant.email }}</strong>.</p>
+<!-- ✅ Current Date & Time Section -->
+<div class="datetime" style="text-align:center; margin:20px 0;">
+    <p><strong>Today's Date:</strong> {% now "F j, Y" %}</p>
+    <p><strong>Current Time:</strong> {% now "h:i A" %}</p>
 </div>
 {% endblock %}
-
-
-
 
 
 
