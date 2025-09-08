@@ -187,6 +187,8 @@ def privacy_policy(request):
 
 
 
+def order_page(request):
+    return render(request, 'home/order_page.html')
 
     
 import random
