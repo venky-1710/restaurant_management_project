@@ -23,6 +23,7 @@ urlpatterns = [
     path('contact/', views.contact_view, name='contact'),
     path('about/',views.about, name='about'),
     path('privacy/',views.privacy_policy, name='privacy'),
+    path('order-confirmation/',views.order_confirmation, name='order_confirmation'),
 ]
 
 
