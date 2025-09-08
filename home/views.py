@@ -42,14 +42,23 @@ def about_page(request):
 
 from .models import Restaurant, MenuItem
 
-def homepage(request):
-    restaurant = Restaurant.objects.first()  # get first restaurant
-    menu = MenuItem.objects.all()
-    return render(request, 'homepage.html', {
-        'restaurant': restaurant,
-        'menu': menu
-    })
+from django.conf import settings
+from .models import Restaurant  # adjust if your model lives elsewhere
 
+def homepage(request):
+    """
+    Basic homepage view. Fetches the first Restaurant (if any) and
+    passes it to the template. Falls back to settings or defaults.
+    """
+    restaurant = Restaurant.objects.first() if hasattr(Restaurant, 'objects') else None
+
+    context = {
+        "restaurant": restaurant,
+        # Fallbacks so the template always has something to show
+        "restaurant_name": getattr(settings, "RESTAURANT_NAME", restaurant.name if restaurant else "My Restaurant"),
+        "phone_number": getattr(settings, "RESTAURANT_PHONE_NUMBER", getattr(restaurant, "phone_number", "+1 (555) 123-4567")),
+    }
+    return render(request, "home/home.html", context)
     
 def contact_us(request):
     context = {
