@@ -26,5 +26,6 @@ urlpatterns = [
     path('privacy/', views.privacy, name='privacy'),  # Privacy Policy
     path('order-confirmation/', views.order_confirmation, name='order_confirmation'),  # Order confirmation
     path('login/', views.user_login, name='login'),  # login page
+    path('order/',views.order_page, name='order_page'),
 ]
 
