@@ -1,12 +1,16 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %}Order Confirmation{% endblock %}
 
 {% block breadcrumbs %}
-    <a href="{% url 'home' %}">Home</a> &raquo;
-    <a href="{% url 'menu' %}">Menu</a> &raquo;
-    Order Confirmation
+    <span>&raquo;</span> Order Confirmation
 {% endblock %}
 
 {% block content %}
-    <h2>Thank you for your order!</h2>
-    <p>Your order has been confirmed.</p>
+    <h2>Order Confirmed ✅</h2>
+    <p>Thank you for your order! 🎉</p>
+    <p>Your order number is: <strong>#{{ order_number }}</strong></p>
+    <p>We’ll notify you once your food is ready for pickup or delivery.</p>
+
+    <a href="{% url 'home' %}" style="display:inline-block; margin-top:20px; padding:10px 20px; background:#ff6347; color:white; border-radius:5px; text-decoration:none;">Back to Home</a>
 {% endblock %}
