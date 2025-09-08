@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy - {{ restaurant.name }}{% endblock %}
+
+{% block content %}
+<div class="privacy-policy">
+    <h1>Privacy Policy</h1>
+    <p>We value your privacy and are committed to protecting your personal information.</p>
+
+    <h2>Information We Collect</h2>
+    <p>We may collect basic information such as your name, email address, and phone number when you interact with our website.</p>
+
+    <h2>How We Use Your Information</h2>
+    <p>Your information is used to improve our services, respond to inquiries, and provide you with updates about our restaurant.</p>
+
+    <h2>Data Protection</h2>
+    <p>We take appropriate security measures to protect your personal information against unauthorized access, alteration, or disclosure.</p>
+
+    <h2>Third-Party Sharing</h2>
+    <p>We do not sell or rent your information to third parties. However, we may share it with service providers who assist us in running our business.</p>
+
+    <h2>Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy, please contact us at <strong>{{ restaurant.email }}</strong>.</p>
+</div>
+{% endblock %}
