@@ -15,18 +15,16 @@
 
 
 
-from django.urls import path   # ✅ import path
-from . import views            # ✅ import views from current app
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('', views.homepage, name='homepage'),
-    path('contact/', views.contact_view, name='contact'),
-    path('about/',views.about, name='about'),
-    path('privacy/',views.privacy_policy, name='privacy'),
-    path('order-confirmation/',views.order_confirmation, name='order_confirmation'),
-    path('login/', views.user_login, name='login'),
+    path('', views.homepage, name='home'),   # homepage
+    path('menu/', views.menu, name='menu'),  # menu page
+    path('about/', views.about, name='about'),  # about page
+    path('faq/', views.faq, name='faq'),        # FAQ page
+    path('privacy/', views.privacy, name='privacy'),  # Privacy Policy
+    path('order-confirmation/', views.order_confirmation, name='order_confirmation'),  # Order confirmation
+    path('login/', views.user_login, name='login'),  # login page
 ]
-
-
-
 
