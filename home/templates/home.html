@@ -1,20 +1,16 @@
 
 {% extends "base.html" %}
 
+{% block title %}Home{% endblock %}
+
 {% block breadcrumbs %}
-    <a href="{% url 'home' %}">Home</a>
+    <span>&raquo;</span> Home
 {% endblock %}
 
 {% block content %}
-    <h2>Welcome to {{ restaurant.name }}</h2>
-    <p>{{ restaurant.tagline }}</p>
-
-    <div class="order-now">
-    <a href="{% url 'order_page' %}" class="order-button">Order Now</a>
-</div>
-
+    <div class="welcome-box">
+        <h2>Welcome to {{ restaurant.name|default:restaurant_name }}</h2>
+        <p class="tagline">Where taste meets tradition 🍽️</p>
+        <p>📞 {{ phone_number }}</p>
+    </div>
 {% endblock %}
-
-
-
-
