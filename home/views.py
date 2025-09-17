@@ -108,11 +108,23 @@ from .models import RestaurantInfo
 from django.shortcuts import render
 from .models import Restaurant
 
+
+from .models import Special
+from datetime import date
+
 def home(request):
-    restaurant = Restaurant.objects.first()  # or filter by ID
-    return render(request, "home.html", {"restaurant": restaurant})
-
-
+    specials = Special.objects.filter(date=date.today())
+    restaurant = {
+        "name": "My Restaurant",
+        "tagline": "Where taste meets tradition 🍽️",
+        "address": "123 Main Street, City",
+        "phone": "+91-9876543210",
+        "opening_hours": "Mon-Sun: 10am - 10pm"
+    }
+    return render(request, 'home.html', {
+        "restaurant": restaurant,
+        "specials": specials
+    })
 
 def menu(request):
     # Fetch all menu items from database
