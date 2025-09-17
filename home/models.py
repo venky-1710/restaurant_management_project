@@ -99,3 +99,36 @@ class About(models.Model):
     def __str__(self):
         return self.title
         
+
+class Customer(models.Model):
+    name = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        help_text="Optional: Name of the customer"
+    )
+    phone = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True,
+        help_text="Optional: Phone number for contact or SMS updates"
+    )
+    email = models.EmailField(
+        blank=True,
+        null=True,
+        help_text="Optional: Email for receipts or marketing"
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        help_text="Timestamp when the customer record was created"
+    )
+
+    def __str__(self):
+        # Show something meaningful even if fields are empty
+        if self.name:
+            return self.name
+        elif self.phone:
+            return self.phone
+        elif self.email:
+            return self.email
+        return f"Customer #{self.id}"
