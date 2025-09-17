@@ -1,70 +1,34 @@
 
 
 
-{% extends "base.html" %}
 
+
+
+{% extends "base.html" %}
 {% block title %}Home{% endblock %}
 
 {% block breadcrumbs %}
-    <span>&raquo;</span> Home
+    <a href="{% url 'home' %}">Home</a>
 {% endblock %}
 
 {% block content %}
-<style>
-    /* Hero background section */
-    .hero {
-        background: url("{% static 'images/restaurant-bg.jpg' %}") no-repeat center center/cover;
-        color: white;
-        text-align: center;
-        padding: 100px 20px;
-        border-radius: 10px;
-    }
-    .hero h2 {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-        text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-    }
-    .hero p {
-        font-size: 1.2rem;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    }
+    <h2>Welcome to {{ restaurant.name }}</h2>
+    <p>{{ restaurant.tagline }}</p>
 
-    /* Food gallery */
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        margin-top: 40px;
-    }
-    .gallery img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        transition: transform 0.3s ease;
-    }
-    .gallery img:hover {
-        transform: scale(1.05);
-    }
-</style>
-
-<!-- Hero Section -->
-<div class="hero">
-    <h2>Welcome to {{ restaurant.name|default:"Our Restaurant" }}</h2>
-    <p>{{ restaurant.tagline|default:"Where taste meets tradition 🍽️" }}</p>
-</div>
-
-<!-- Gallery Section -->
-<div class="gallery">
-    <img src="{% static 'images/food1.jpg' %}" alt="Delicious Dish 1">
-    <img src="{% static 'images/food2.jpg' %}" alt="Delicious Dish 2">
-    <img src="{% static 'images/food3.jpg' %}" alt="Delicious Dish 3">
-</div>
+    <h3>Today's Specials</h3>
+    {% if specials %}
+        <ul>
+            {% for special in specials %}
+                <li>
+                    <strong>{{ special.name }}</strong> - ₹{{ special.price }} <br>
+                    <em>{{ special.description }}</em>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No specials for today. Please check back tomorrow!</p>
+    {% endif %}
 {% endblock %}
-
-
-
-
 
 
 
