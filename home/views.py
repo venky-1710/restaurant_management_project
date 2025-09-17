@@ -222,7 +222,38 @@ def feedback_view(request):
 
 
 
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import MenuItem
 
+def add_to_cart(request, item_id):
+    cart = request.session.get('cart', {})
+    item = get_object_or_404(MenuItem, id=item_id)
+
+    if str(item_id) in cart:
+        cart[str(item_id)]['quantity'] += 1
+    else:
+        cart[str(item_id)] = {
+            'name': item.name,
+            'price': float(item.price),
+            'quantity': 1,
+        }
+
+    request.session['cart'] = cart
+    return redirect('cart_view')
+
+
+def cart_view(request):
+    cart = request.session.get('cart', {})
+    total = sum(item['price'] * item['quantity'] for item in cart.values())
+    return render(request, 'cart.html', {'cart': cart, 'total': total})
+
+
+def remove_from_cart(request, item_id):
+    cart = request.session.get('cart', {})
+    if str(item_id) in cart:
+        del cart[str(item_id)]
+        request.session['cart'] = cart
+    return redirect('cart_view')
 
 
 
