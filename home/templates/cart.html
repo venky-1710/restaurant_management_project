@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Your Cart{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{% url 'home' %}">Home</a> &gt; Cart
+{% endblock %}
+
+{% block content %}
+<h2>Your Cart</h2>
+
+{% if cart %}
+    <table border="1" cellpadding="10" style="width:100%; border-collapse: collapse;">
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Action</th>
+        </tr>
+        {% for key, item in cart.items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>₹{{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>₹{{ item.price|floatformat:2|add:""|floatformat:2|safe }} * {{ item.quantity }} = ₹{{ item.price|floatformat:2|floatformat:2 }}</td>
+            <td><a href="{% url 'remove_from_cart' key %}">Remove</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h3>Total: ₹{{ total }}</h3>
+{% else %}
+    <p>Your cart is empty.</p>
+{% endif %}
+
+<a href="{% url 'menu' %}">Continue Shopping</a>
+{% endblock %}
