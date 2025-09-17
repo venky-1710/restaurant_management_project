@@ -132,3 +132,40 @@ class Customer(models.Model):
         elif self.email:
             return self.email
         return f"Customer #{self.id}"
+
+
+from django.db import models
+
+class Special(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+    date = models.DateField(auto_now_add=True)  # defaults to today's date
+
+    def __str__(self):
+        return self.name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
