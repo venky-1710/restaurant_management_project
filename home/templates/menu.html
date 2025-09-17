@@ -1,29 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Menu{% endblock %}
-
-{% block breadcrumbs %}
-<span>› <a href="{% url 'menu' %}">Menu</a></span>
-{% endblock %}
-
-{% block content %}
-    <h2>Our Delicious Menu</h2>
-    <p style="margin-bottom:20px;">Explore our wide variety of dishes 🍕🍔🥗🍛</p>
-
-    {% if menu_items %}
-        <ul style="list-style:none; padding:0; text-align:left;">
-            {% for item in menu_items %}
-                <li style="margin:10px 0; padding:10px; border-bottom:1px solid #ddd;">
-                    <strong>{{ item.name }}</strong> - ₹{{ item.price }} <br>
-                    <small>{{ item.description }}</small>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No menu items available at the moment. Please check back later!</p>
-    {% endif %}
-{% endblock %}
 
 
-
-
+{% for item in menu_items %}
+    <div class="menu-item">
+        <h3>{{ item.name }}</h3>
+        <p>₹{{ item.price }}</p>
+        <a href="{% url 'add_to_cart' item.id %}" class="btn">Add to Cart</a>
+    </div>
+{% endfor %}
